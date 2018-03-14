@@ -1,0 +1,41 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX root = ../Tesi.tex
+% !TEX spellcheck = it-IT
+
+%*******************************************************
+% Sommario+Abstract
+%*******************************************************
+\cleardoublepage
+\phantomsection
+\pdfbookmark{Sommario}{Sommario}
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+
+
+\pdfbookmark{Abstract}{Abstract}
+\chapter*{Abstract}
+
+Presento alcuni algoritmi di pianificazione dinamica basati su Velocity Obstacle per multiple mobile robot e/o virtual agents. 
+Ogni robot \'e indipendente uno dall'altro senza coordinate centrali e senza comunicare con gli altri agenti.
+Ogni algoritmo prevede la conoscenza della posizione e velocit\'a corrente di ogni agente per computare la loro futura traiettoria. 
+\\Infine, presenter\'o l'implementazione della simulazione dell' algoritmo basato su Velocity Obstacle implementato in Matlab, che chiameremo Detect Velocity Obstacle- DVO.
+
+\selectlanguage{italian}
+
+\chapter*{Definizione del problema}
+Noi consideriamo che ogni robot e ostacolo statico o dinamico nell'ambiente sia a disc-shape. 
+Per ogni robot {\bfseries\textit{A}} assumo avere un raggio fissato {\bfseries\textit{r}\ped A}, una posizione corrente {\bfseries\textit{p}\ped A}, e una velocit\'a corrente {\bfseries\textit{v}\ped A}, inoltre di ciascuno sono note queste specifiche che possono essere condivise dagli altri robot nell'ambiente. Ogni robot possiede una posizione di arrivo (goal) denotata {\bfseries\textit{p}\ap{goal}\ped A} ed una velocit\'a preferita {\bfseries\textit{v}\ap{pref}\ped A}, queste non sono conosciute agli altri robot.
+\\Il goal \'e semplicemente un punto fissato nel piano. La velocit\'a preferita \'e la velocit\'a calcolata tra la posizione corrente e il goal, senza considerare altre variabili in gioco, ed \'e chiamata anche velocit\'a \textit{ideale}.
+\\L'obiettivo di ogni robot \'e scegliere, indipendentemente e simultaneamente, una nuova velocità ad ogni passo di computazione, che permetta di eseguire una traiettoria verso il suo obiettivo senza causare collisioni con
+tutti gli altri robot o ostacoli, cercando di avere il minor numero di oscillazioni
+possibili.
+\vfill
+\selectlanguage{english}
+
+\endgroup			
+
+\vfill
+

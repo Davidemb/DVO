@@ -1,0 +1,126 @@
+              %******************************************%
+              %	Algoritmi di pianificazione dinamica
+              %					di	
+              %			    Davide Zorzi
+              %******************************************%
+       
+
+% I seguenti commenti speciali impostano:
+% 1. utf8 come codifica di input,
+% 2. PDFLaTeX come motore di composizione;
+% 3. Tesi.tex come documento principale;
+% 4. il controllo ortografico italiano per l'editor.
+
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = pdflatex
+% !TEX root = Tesi.tex
+% !TEX spellcheck = it-IT
+
+\documentclass[11pt,%                      % corpo del font principal
+               a4paper,%                   % carta A4
+               twoside,openright,%         % fronte-retro
+%              oneside,openany,%           % solo fronte
+               ]{book}
+               
+\usepackage[T1]{fontenc}                   % codifica dei font:
+                                           % NOTA BENE! richiede una distribuzione *completa* di LaTeX
+                                           % per esempio TeXLive o MiKTeX *complete*
+
+\usepackage[utf8]{inputenc}                % codifica di input; anche [latin1] va bene
+                                           % NOTA BENE! va accordata con le preferenze dell'editor
+
+\usepackage{microtype}                     % microtipografia
+
+\usepackage[english,italian]{babel}        % per scrivere in italiano e in inglese;
+                                           % l'ultima lingua (l'italiano) risulta predefinita
+                                           
+\usepackage[binding=5mm]{layaureo}         % margini ottimizzati per l'A4; rilegatura di 5 mm
+
+\usepackage[suftesi]{frontespizio}         % frontespizo
+                                           % per includerlo nel documento bisogna:
+                                           % 1. compilare una prima volta Tesi.tex;
+                                           % 2. compilare a parte Tesi-frn.tex, generato dalla compilazione precedente;
+                                           % 3. compilare ancora Tesi.tex. 
+
+\usepackage{emptypage}                     % pagine vuote senza testatina e piede di pagina
+
+\usepackage{indentfirst}                   % rientra il primo capoverso di ogni sezione
+
+\usepackage{booktabs}                      % tabelle
+
+\usepackage{tabularx}                      % tabelle di larghezza prefissata
+
+\usepackage{graphicx}                      % immagini
+
+\usepackage{subfig}                        % sottofigure, sottotabelle
+
+\usepackage{caption}                       % didascalie
+
+\usepackage{listings}                      % codici
+
+\usepackage[font=small]{quoting}           % citazioni
+
+\usepackage{amsmath,amssymb,amsthm}        % matematica
+
+\usepackage[italian]{varioref}             % riferimenti completi della pagina
+
+%\usepackage[backend=biber,style=philosophy-modern,hyperref,backref,square,natbib]{biblatex};
+
+\usepackage[backend=biber,style=philosophy-modern,hyperref,square]{biblatex}
+                                           % eccellente pacchetto per la bibliografia;
+                                           % produce uno stile di citazione autore-anno; 
+                                           % lo stile "numeric-comp" produce riferimenti numerici
+                                          
+\addbibresource{Bibliografia.bib}          % database di biblatex 
+                                          
+\usepackage{chngpage,calc}                 % centra il frontespizio
+
+\usepackage[dvipsnames]{xcolor}            % colori
+
+\usepackage{lipsum}                        % testo fittizio
+
+\usepackage{eurosym}                       % simbolo dell'euro
+
+\usepackage{hyperref}                      % collegamenti ipertestuali
+
+\usepackage{lmodern}			    % senza questo non compila
+
+\usepackage{verbatim}      % commenti in più righe
+
+\input{impostazioni-tesi}                  % file con le impostazioni personali
+
+\begin{document}
+\frontmatter
+%******************************************************************
+% Materiale iniziale
+%******************************************************************
+\input{MaterialeInizialeFinale/Frontespizio}
+%\input{MaterialeInizialeFinale/Colophon}
+\input{MaterialeInizialeFinale/Dedica}
+\input{MaterialeInizialeFinale/Indici}
+\input{MaterialeInizialeFinale/Sommario+Abstract}
+\input{MaterialeInizialeFinale/Ringraziamenti}
+\input{MaterialeInizialeFinale/Introduzione}
+\cleardoublepage
+%******************************************************************
+% Materiale principale
+%******************************************************************
+\mainmatter
+\input{Capitoli/VelocityObstacle}
+\input{Capitoli/RVelocityObstacle}
+\input{Capitoli/HRVelocityObstacle}
+\input{Capitoli/ORCA}
+\input{Capitoli/DVO}
+\input{Capitoli/Bibliografia}
+
+
+
+%\appendix
+
+% *****************************************************************
+% Materiale finale
+%******************************************************************
+%\backmatter
+%\input{MaterialeInizialeFinale/Bibliografia}
+%\input{MaterialeInizialeFinale/Dichiarazione}
+\end{document}
