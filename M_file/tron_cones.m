@@ -35,7 +35,7 @@ D=sqrt ( (xB-xA)^2 + (yB-yA)^2 );
 
 % First case : process external tangents
 
-if (D^2 - (RA-RB)^2>=0)
+% if (D^2 - (RA-RB)^2>=0)
     
     % Compute the lenght of the tangents
     L=sqrt(D^2 - (RA-RB)^2);
@@ -78,8 +78,9 @@ if (D^2 - (RA-RB)^2>=0)
     
     X=[Xa Xb x x2];
     Y=[Ya Yb y1 y2];
-    
-    vi = convhull(X,Y);
+    Rc=real(X);
+    Ry=real(Y);
+    vi = convhull(Rc,Ry);
     for i=1:length(vi)
         temp = vi(i);
         pos_X(i) = X(temp);
@@ -128,15 +129,16 @@ if (D^2 - (RA-RB)^2>=0)
     end
     
    
-     
- 
-   if obj.Identity == 1
-       
-       %plot(x_c,y_c,'g')
-   end
-else
-    disp ('No external tangents');
-end
+   
+%    if obj.Identity == 1
+%        
+%        %plot(x_c,y_c,'g')
+%    end
+% else
+%     disp ('No external tangents');
+%     pos_X = 0;
+%     pos_Y = 0;
+% end
 %vx_a=(A.Position(1)+A.Speed(1)*)*2;
 %vy_a=(A.Position(2)+A.Speed(2)*time)*2;
    

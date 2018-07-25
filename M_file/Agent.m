@@ -13,11 +13,12 @@ classdef Agent < handle
         New_Position
         New_Speed
         NeighborDist
+        Color
     end
 
     methods ( Access = public )
         % costruttore
-        function obj = Agent( id, pos, goal, vel, p_vel, rad, n_p, n_s, n_d, F )
+        function obj = Agent( id, pos, goal, vel, p_vel, rad, n_p, n_s, n_d, n_c, F)
             if nargin > 0
                 for i=1:F
                     
@@ -30,6 +31,7 @@ classdef Agent < handle
                     obj(i).New_Position = n_p;
                     obj(i).New_Speed = n_s;
                     obj(i).NeighborDist = n_d;
+                    obj(i).Color = n_c;
                 
                 end
             end
@@ -60,6 +62,10 @@ classdef Agent < handle
             
         end
         
+        function setColor(obj, color)
+            obj.Color = color;
+        end
+        
     % funzione che calcola la nuova velocità
     function findVelocity(obj,others,time)
         
@@ -71,27 +77,34 @@ classdef Agent < handle
 
             for i=1:length(others)
                 if(others(i).Identity ~= obj.Identity)
-                    
                         % calcolo il cono delle collisioni
-                        [cone]=tron_cones(obj,others(i),time);
-                        
-                        % controllo se le velocità ammissibili sono dentro
-                        % o fuori al cono delle collisioni
-                        in=inpolygon(ad_vel(:,1),ad_vel(:,2),cone(1,:),cone(2,:));
-                        ad_vel=[ad_vel,in];
-  
-                        for q=1:length(ad_vel(:,end))
-                            if ad_vel(q,4) == 1
-                                ad_vel(q,:)=[0,0,0,0];
+%                         if (obj.NeighborDist(others(i).Identity))                        
+                            [cone]=tron_cones(obj,others(i),time);
+                            if (obj.Identity == 1)
+                                hold on;
+%                                 plot(cone(1,:),cone(2,:),'k-.');
+                                hold off;
+%                             elseif ()
+%                                 hold on;
+%                                 plot(cone(1,:),cone(2,:),'g');
+%                                 hold off;  
                             end
-                        end
-                     
+                            in=inpolygon(ad_vel(:,1),ad_vel(:,2),cone(1,:),cone(2,:));
+                            ad_vel=[ad_vel,in];
+                            for q=1:length(ad_vel(:,end))
+                                if ad_vel(q,4) == 1
+                                    ad_vel(q,:)=[0,0,0,0];
+                                end
+                            end
                         ad_vel( all(~ad_vel,2), : ) = [];
                         
                         % ritorno le velocità ammissibili con la relativa
                         % distanza tra la sua v_pref
                         ad_vel=ad_vel(:,1:3);
                        speed_ok=1;
+%                         end
+                        % controllo se le velocità ammissibili sono dentro
+                        % o fuori al cono delle collisioni     
                 end    
             end 
             
