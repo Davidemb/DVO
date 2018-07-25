@@ -1,6 +1,6 @@
 # DVO - Detect Velocity Obstacle 
 > author: Davide Zorzi - 2015/2016
-![DVO](/Screen/12_dx.jpg "DVO")
+![DVO](/Screen/wow.jpg "DVO")
 Algoritmi di pianificazione dinamica basati su Velocity Obstacle - VO - algorithms for robot collision avoidance
 ## Implementazione MATLAB
 
